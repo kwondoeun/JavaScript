@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var num1 = "10"; //문자ok
+        var num2 = '10'; //문자ok
+        var num3 = 10; //숫자
+
+        //변수의 변경 - 타입을 지키지 않아도 됩니다.
+        num1 = 3.14;
+        num2 = 10;
+        num3 = '10';
+
+        //숫자 + 숫자 = 숫자, 숫자 + 문자 = 문자
+        var result = num1 + num2 +num3;
+        console.log(result);
+        console.log(10 + 3.14); //13.14
+        console.log(20 + '20'); //2020
+        console.log(10 + undefined); //NaN -> 잘못된 연산
+
+    </script>
+
+    
+</body>
+</html>

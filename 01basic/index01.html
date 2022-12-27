@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 링크를 걸때 head에 먼저걸면 js가 먼저실행, body에 걸면 html 실행 후 js실행-->
+    <!-- 외부 js링크 (상대 or 절대경로) -->
+    <!-- js링크 순서는 반드시 head에 있는 것은 아니고, 파일에 렌더링(화면해석) 순서에 따라 달라질수 있음 -->
+    <script src="index01.js"></script>
+
+</head>
+<body>
+
+    <script>
+        //동일 변수의 선언이 가능. 주의
+        var a = 10;
+        var a = 20;
+        a = 100; //변수의 변경
+
+        console.log(a); //콘솔출력
+        document.write(a); //html화면 출력 (많이 사용x)
+        
+        //alert(a); //경고창, 확인을 눌러야 다음을 실행
+        //confirm(a); //확인창
+
+
+    </script>
+    
+</body>
+</html>
