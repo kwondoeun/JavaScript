@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var num1 = "10";
+        var num2 = 10;
+
+        console.log(num1 == num2); //true (값만 비교)
+        console.log(num1 != num2); //false
+
+        console.log(num1 === num2); //false (값과, 타입까지 비교)
+        console.log(num1 !== num2); //true (값과, 타입까지 비교)
+
+        var a;
+        var b = null;
+        console.log(a, b, a == b); //true - 변수값을 동시에 출력 , 타입은 다르지만 둘다 비어있기때문에 a==b 는 true출력(==사용하였기때문)
+        console.log(a, b, a != b );
+        console.log(a, b, a === b); //false - 변수값을 동시에 출력 , a===b 는 false출력(===사용하였기때문)
+        console.log(a, b, a !== b); //true
+
+    </script>
+
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //객체의 표현 {}
+        //**둘다 알아야함**
+        var person = {name: 'hong', age: 20, info:[1,2,3] };
+        console.log(person);
+
+        //객체의 접근방법이 2개 입니다.
+        //list -> .으로 접근
+        console.log(person.name); //hong
+        console.log(person.age); //20
+        console.log(person.info); //[1,2,3]
+
+        //2nd -> 이름[키]
+        console.log(person['name']); //hong
+        console.log(person['age']); //20
+        console.log(person['info']); //[1,2,3]
+
+        //객체 안에 객체
+        var exam = {kor: 10, eng: 20};
+        var kim = {name: '김길동', exam: exam};
+        //kim이 가지고 있는 kor값의 사용?
+        console.log(kim.exam.kor);
+        console.log(kim['exam']['kor']);
+        console.log(kim.exam['kor']);
+
+    </script>
+    
+</body>
+</html>

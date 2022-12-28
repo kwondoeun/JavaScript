@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function obj() {
+
+            var name = "홍길동";
+            //get
+            // return function() {
+            //     return name;
+            // }
+
+            //set
+            // return function(aaa) {
+            //     name = aaa;
+            //     console.log(name);
+            // }
+            return {
+                getName : function() { //getName에 function객체를 저장
+                    return name;
+                },
+                setName : function(aaa) {
+                    name = aaa;
+                }
+            }
+        }
+
+        // var getObj = obj();
+        // console.log(getObj());
+
+        // var setObj = obj();
+        // setObj("이순신");
+
+        //
+        var result = obj(); //obj반환
+        result.setName("이순신"); //setter
+        console.log( result.getName() ); //getter
+
+
+
+    </script>
+    
+</body>
+</html>

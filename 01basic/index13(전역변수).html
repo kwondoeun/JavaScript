@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //var변수의 유효범위는 함수이다.
+        var num1 = 50; //전역변수
+        if(true) {
+            var num2 = 100; //전역취급
+        }
+        console.log(num2); 
+
+
+        var num3 = 100; //전역변수
+        function add() { 
+            var num4 = 200; //지역변수 (함수안이여서)
+        }
+        //console.log(num4); //err
+
+        //ES6 - let변수, 중괄호 스코프 (변수의 중복 선언x)
+        let x1 = 100;
+        if(true) {
+            let x2 = 200; //지역변수
+        }
+        //console.log(x2); //err
+
+
+        let x3 = 100; //전역변수
+        function add2() {
+            let x4 = 200; //지역변수
+        }
+        //console.log(x4); //err
+
+    </script>
+    
+</body>
+</html>

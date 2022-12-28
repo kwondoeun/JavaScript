@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //1st
+
+        // function func1() {
+        // }
+        // var a = func1;
+
+        //a(); //에러
+
+        var a = function() {
+            console.log('a함수');
+        }
+        a(); //익명함수는 반드시 아래쪽에서 호출해야함
+
+        //매개변수 리턴
+        var b = function(x,y) {
+            return x + y;
+        }
+
+        var result = b(1,2);
+        console.log('b함수:', result);
+
+
+
+        console.log('-------------------------------------------');
+        //1. 익명함수로 변경해보기
+        function method1(x) {
+            if(x % 2 == 0) {
+                return '짝수';
+            } else {
+                return '홀수';
+            }
+        }
+
+        var v = function(x) {
+            if(x % 2 == 0) {
+                return '짝수';
+            } else {
+                return '홀수';
+            }
+        }
+        console.log(v(10));
+
+        //선생님 답
+        // var c = function(x) {
+        //     return x % 2 == 0 ? "짝수" : "홀수";
+        // }
+
+
+        //2. 매개변수를 3개 받아서 평균을 반환하는 익명함수를 선언
+        var v1 = function(a,b,c) {
+            return (a + b + c) /3;
+        }
+        console.log(v1(3,4,5));
+
+
+        console.log("---------------------------------");
+        //즉시실행 함수
+
+        (function(x, y, z) {
+            console.log("즉시실행", (x+y+z));
+        })(1, 2, 3); //나자신을 호출하겠다라는 호출물
+
+
+    </script>
+    
+</body>
+</html>

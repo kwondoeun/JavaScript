@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function func1(x,y) {
+            //arguments 키워드를 이용해서 매개변수를 찾아서 사용할 수 있음.
+            console.log("매개변수의길이:" + arguments.length);
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+
+            return x + y;
+        }
+
+        //매개변수 자체는 큰 의미가 없습니다. 단순히, 사용할 값에 이름을 붙이는 형태
+        // console.log( func1(1));
+        // console.log( func1(1, 2));
+        console.log( func1(1, 2, 3, 4, 5));
+
+    </script>
+    
+</body>
+</html>
