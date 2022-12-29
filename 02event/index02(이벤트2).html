@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="btn">기본이벤트</button>
+
+    <script>
+        //script는 취득할 태그보다 아래에 있어야 합니다.
+        
+        var a = document.getElementById("btn");
+        a.onclick = function() { //a가 가지고 있는 onclick 속성에 대입하겠다란 의미 (익명함수 대입)
+            console.log('기본이벤트');
+            console.log(this); //자기자신
+            console.log(a); //태그자신
+        }
+    </script>
+    
+</body>
+</html>

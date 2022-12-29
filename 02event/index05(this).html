@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>this의 의미</h3>
+
+    <button id="btn">이벤트에서의 this</button>
+
+    <script>
+        //함수에서의 this -> window라는 최상위 객체
+        //이벤트에서의 this -> 태그자신
+
+        var a = 1; //전역변수 a는 window에 선언됨
+
+        function aaa() {
+            var a = 10; //지역변수
+            console.log(a); //지역변수 접근
+            console.log(this); //window
+            console.log(this.a); //전역변수에 접근
+        }
+        aaa();
+
+
+        //이벤트
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click" , function() {
+            console.log(this); //태그 자기 자신
+        })
+
+
+    </script>
+    
+</body>
+</html>

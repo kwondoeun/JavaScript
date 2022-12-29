@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>태그의 속성 제어하기</h3>
+
+    <input type="text" value="" id="input" required> 
+    <div class="msg"></div>
+
+    <button type="button" id="btn">확인</button>
+
+    <script>
+        //태그의 속성은 =  .속성명으로 접근합니다.
+        var input = document.getElementById("input");
+
+        //console.log(input);
+        //console.log(input.type); //type속성(text)
+        //console.log(input.id); //id속성
+        //console.log(input.value); //value속성
+        //console.log(input.required); //required속성
+        //input.value = "변경";
+
+        //태그의 사이값을 HTML형식으로 얻음 innerHTML
+        var btn = document.getElementById("btn");
+        //console.log(btn.innerHTML);
+
+        var msg = document.querySelector(".msg");
+
+        //버튼을 누르면 사용자가 입력한 value를 가지고 나와서 msg 태그 사이에 출력.
+        btn.addEventListener("click", function() {
+
+            var a = input.value; //user가 입력한 value
+            msg.innerHTML = a;
+
+        })
+
+
+
+    </script>
+
+    
+</body>
+</html>

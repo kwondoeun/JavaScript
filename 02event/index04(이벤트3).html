@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">표준이벤트</button>
+
+    <script>
+        //표준이벤트 - 는 동일한 이벤트를 체이닝(click이벤트 여러개 사용 가능)
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", function () {
+
+            console.log("표준이벤트");
+
+        });
+
+        btn.addEventListener("click", function () {
+
+            console.log("표준이벤트2");
+
+        });
+
+        //1st
+        // function aaa() {
+        //     console.log("표준이벤트");
+        // }
+
+    </script>
+
+</body>
+
+</html>
