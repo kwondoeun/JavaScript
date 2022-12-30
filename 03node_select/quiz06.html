@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input:focus {
+            outline: none;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h3>onfocus - 인풋에 focus들어갈 때 동작, onblur - 인풋에 focus가 떠났을 때 동작</h3>
+    
+    <!-- 
+    <input type="text" class="xx" >
+
+    <script>
+        var xx = document.querySelector(".xx");
+        xx.onfocus = function() {
+            console.log("포커스 진입");
+        }
+        xx.onblur = function() {
+            console.log("포커스 아웃");
+        }
+
+    </script>
+
+    -->
+
+
+    <input type="text" placeholder="4글자 이상" id="id"><span class="idmsg"></span>
+    <br>
+    <input type="password" placeholder="9글자 이상" id="pw"><span class="pwmsg"></span>
+
+    <script>
+        var id = document.getElementById("id");
+        var pw = document.getElementById("pw");
+        var idmsg = document.querySelector(".idmsg");
+        var pwmsg = document.querySelector(".pwmsg");
+
+        id.onchange = function() {
+            //console.log(id.value.length );
+            if(id.value.length < 4 ) {
+                id.style.border = "1px solid red";
+                idmsg.innerHTML = "아이디는 4글자 이상입니다";
+            } else {
+                id.style.border = "1px solid green";
+                idmsg.innerHTML = "";
+            }
+        }
+
+        pw.onchange = function() {
+            if(pw.value.length < 4 ) {
+                pw.style.border = "1px solid red";
+                pwmsg.innerHTML = "비밀번호는 9글자 이상입니다";
+            } else {
+                pw.style.border = "1px solid green";
+                pwmsg.innerHTML = "";
+            }
+        }
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>JS카운트 만들기 - this, innerHTML, value속성을 사용하면 됩니다.</h3>
+
+    <input type="number" value="0">
+    <button onclick="calc(this)">증가</button> <!-- 이자체 -> <button onclick="calc(this)">증가</button> -->
+    <button onclick="calc(this)">감소</button>
+
+    <script>
+
+        function calc(tag) {
+
+            //console.log(tag.innerHTML); -> <>이사이에 들어간 값을 빼줌
+
+            //css처럼 태그명(id나 클래스가 없으므로)을 가져옴, 하나만 가져와야 하기 때문에 querySelector사용.
+            var input = document.querySelector('input'); //input을 가져와서 변수 input에 담음
+
+            if(tag.innerHTML == '증가') {
+                input.value++; //input태그의 value값을 가져옴
+            } else {
+                if(input.value == 0) {
+                    alert("0이하 불가");
+                    return;
+                }
+                input.value--;
+            }
+        }
+
+    </script>
+    
+</body>
+</html>

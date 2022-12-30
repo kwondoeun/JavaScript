@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>JS카운트 만들기 - this, innerHTML, value속성을 사용하면 됩니다.</h3>
+
+    <input type="number" value="0" id="num">
+    <button onclick="calc(this)">증가</button> <!-- 이자체 -> <button onclick="calc(this)">증가</button> -->
+    <button onclick="calc(this)">감소</button>
+
+    <script>
+
+        var num = document.getElementById("num");
+
+        function calc(x) { //x가 태그
+
+            if(x.innerHTML == "증가") {
+                num.value++;
+            } else {
+                if(num.value <= 0) {
+                    alert("0보다 작을 수 없습니다")
+                    return; //종료
+                }
+                num.value--;
+            }
+            
+        }
+
+    </script>
+    
+</body>
+</html>

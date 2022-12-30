@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--
+    <article>
+        
+        <img src="img/1.jpg" width="200" class="img" style="border: 3px solid black;">
+        
+        <select class="sel">
+            <option value="1.jpg">봄</option>
+            <option value="2.jpg">여름</option>
+            <option value="3.jpg">가을</option>
+            <option value="4.jpg">겨울</option>
+        </select>
+        <button class="btn">이미지바꾸기</button>
+
+
+        
+        <input type="color" class="input">
+        <button class="btn2">색상변경하기</button>
+
+    </article>
+
+    <script>
+        //버튼을 클릭하면 select태그의 value를 img의 src에 넣는다.
+        var img = document.querySelector(".img");
+        var sel = document.querySelector(".sel");
+        var btn = document.querySelector(".btn");
+        btn.onclick = function() {
+            img.src = "img/" + sel.value; 
+        }
+
+        //input의 value를 얻어서 img의 style에 적용
+        var input = document.querySelector(".input");
+        var btn2 = document.querySelector(".btn2");
+        btn2.onclick = function() {
+            //console.log(input.value)
+            img.style.border = "3px solid " + input.value;
+        }
+
+    </script>
+    -->
+
+
+
+    <article>
+
+        <h3>change이벤트로 한번에 변경하기</h3>
+
+        <img src="img/1.jpg" width="200" class="img" style="border: 3px solid black;">
+        
+        <select class="sel">
+            <option value="1.jpg">봄</option>
+            <option value="2.jpg">여름</option>
+            <option value="3.jpg">가을</option>
+            <option value="4.jpg">겨울</option>
+        </select>
+        
+        <input type="color" class="input">
+
+    </article>
+
+    <script>
+
+        var img = document.querySelector(".img");
+        var sel = document.querySelector(".sel");
+        sel.onchange = function() {
+            img.src = "img/" + sel.value;
+        }
+
+        var input = document.querySelector(".input");
+        input.onchange = function() {
+            img.style.border = "3px solid" + input.value;
+        }
+        
+    </script>
+
+
+
+
+
+
+</body>
+</html>

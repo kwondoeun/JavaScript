@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="checkbox" name="seat" value="1">1번
+    <input type="checkbox" name="seat" value="2">2번
+    <input type="checkbox" name="seat" value="3">3번
+    <input type="checkbox" name="seat" value="4">4번
+    <input type="checkbox" name="seat" value="5">5번
+    <input type="checkbox" name="seat" value="6">6번
+    <input type="checkbox" name="seat" value="7">7번
+    <input type="checkbox" name="seat" value="8">8번
+    <input type="checkbox" name="seat" value="9">9번
+    
+    <button type="button" id="btn">클릭</button>
+
+    <script>
+        //버튼을 클릭시, 좌석이 적어도 한개이상 체크되어있지 않다면 경고창을 띄우세요.
+        var btn = document.getElementById("btn");
+        var checkbox = document.getElementsByName("seat");
+
+        
+        btn.onclick = function() {
+            var count = 0;
+
+            for(var i = 0; i < checkbox.length; i++) {
+                if(checkbox[i].checked == true) {
+                    count++;
+                }
+            }
+
+            if(count == 0) {
+                alert('좌석을 지정해주세요');
+            }
+        }
+    </script>
+
+    
+</body>
+</html>

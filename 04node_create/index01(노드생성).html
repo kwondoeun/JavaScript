@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- innerHTML -->
+    <div class="inner1">
+
+    </div>
+    <button class="btn">태그생성</button>
+
+    <script>
+        var inner1 = document.querySelector(".inner1");
+        var btn = document.querySelector(".btn");
+
+        btn.onclick = function() {
+            //문자열의 형태로 태그를 자식으로 넣는다.
+            inner1.innerHTML = "<div><a href='#'>태그생성</a></div>"
+        }
+    </script>
+
+    <hr>
+
+    <div class="inner2">
+        <!--
+            <input type="checkbox" name="add" value="1">1
+            <input type="checkbox" name="add" value="2">2
+            <input type="checkbox" name="add" value="3">3
+            <input type="checkbox" name="add" value="4">4
+            <input type="checkbox" name="add" value="5">5
+        -->
+    </div>
+
+    <button class="btn2">태그생성</button>
+
+    <script>
+        var inner2 = document.querySelector(".inner2");
+        var btn2 = document.querySelector(".btn2")
+        btn2.onclick = function() {
+
+            var str = '';
+            for(var i = 1; i <= 5; i++) {
+                str += '<input type="checkbox" name="add" value="'+ i +'">' +i;
+            }
+
+            inner2.innerHTML = str;
+        }
+
+    </script>
+
+</body>
+
+</html>
