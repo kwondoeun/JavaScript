@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <h3>클래스 속성 제어하기</h3>
+    <button id="btn" class="btn btn-default">버튼</button>
+
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function() {
+
+            //태그에 속성변경-->
+            //console.log( btn.class ); //클래스는 키워드라 안됩니다.
+            //console.dir(btn);
+
+            //console.log( btn.className ); //클래스명을 얻음
+            //console.log( btn.classList ); //클래스명을 배열로 얻음
+
+            //btn.classList.add( "newBtn" ); //클래스명 추가
+            //btn.classList.remove("btn-default"); //클래스명 삭제
+
+            // if(btn.classList.contains("btn") ){
+            //     console.log("btn 클래스는 존재함");
+            // }
+
+            btn.classList.toggle("aaa"); //있으면 제거, 없으면 추가
+
+        }
+
+    </script>
+
+    <hr>
+    <h3>하나의 버튼으로 두가지 작업을 처리하기(toggle)</h3>
+    <button class="toggle" id="toggle">토글버튼</button> <!-- id에 이번트 제어 -->
+
+    <style>
+        .add{color: aqua;}
+    </style>
+
+    <script>
+        var toggle = document.getElementById("toggle");
+        toggle.onclick = function() {
+
+            //css, class제거
+            // if( toggle.classList.contains("add") ) { //add가 포함되어있다면
+            //     toggle.style.color = "black"; //색상변경
+            //     toggle.classList.remove("add"); //클래스제거
+            // } else {
+            //     toggle.style.color = "aqua";
+            //     toggle.classList.add("add");
+            // }
+
+            toggle.classList.toggle("add");
+        }
+
+    </script>
+
+
+</body>
+</html>

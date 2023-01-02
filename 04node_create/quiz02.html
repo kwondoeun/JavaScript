@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>step1</h3>
+    <h3>input은 지우는게 아니라 display를 제어하세요</h3>
+    <h4>할일 목록 만들기</h4>
+    <h4 class="msg"></h4>
+
+    <button class="allDel">전체삭제하기</button><br>
+    <br>
+
+    <div class="hidden">
+        <input type="text" class="id" placeholder="이름을 입력하세요"> 
+        <button class="btn">확인</button><br>
+    </div>
+    <div>
+        <input type="text" class="todo" placeholder="당신의 할일을 적으세요">
+        <button class="btn2">확인</button>
+    </div>
+
+    <ul class="list"></ul>
+
+    <script>
+        var msg = document.querySelector(".msg"); //querySelctor이 편하다고 함.
+        var id = document.querySelector(".id");
+        var btn = document.querySelector(".btn");
+        var todo = document.querySelector(".todo");
+        var btn2 = document.querySelector(".btn2");
+
+        btn.onclick = function() {
+            msg.innerHTML = id.value + "님 안녕하세요";
+            //이름을 입력한후 인풋창이 사라져야 하므로 
+            var hidden = document.querySelector(".hidden");
+            hidden.style.display= "none";
+        }
+
+
+        var list = document.querySelector(".list");
+
+        btn2.onclick = function() {
+            var li = document.createElement("li");
+            //li 옆에 x버튼을 붙여줌
+            var del = '<button ondblclick="del(this)">더블클릭삭제</button>';
+            var up = '<button onclick="up(this)">위이동</button>';
+            var down = '<button onclick="down(this)">아래이동</button>';
+            li.innerHTML = todo.value + del + up + down;
+            //li를 추가하는
+            list.appendChild(li);
+
+            
+            //할일 입력을 하고 확인을 누르면 입력한 값이 날라가게 설정
+            todo.value = null;
+        }
+
+        //삭제 버튼의 이벤트, 더블 클릭하면 삭제 가능
+        function del(a) {
+            console.log(a.parentElement);
+            a.parentElement.remove();
+        }
+        //리스트를 위로 올릴수 있는 함수
+        function up(a) {
+            var current = a.parentElement;
+            var next = current.previousElementSibling;
+
+            list.insertBefore(current, next);
+            
+        }
+        //리스트를 아래로 내릴수 있는 함수
+        function down(a) {
+            var current = a.parentElement;
+            var next = current.nextElementSibling;
+
+            list.insertBefore(next, current);
+        }
+        //전체 삭제할수 있는 버튼, 그냥 remove를 하게되면 통째로 날라가서 ul태그가 사라진후
+        //재입력이 안되기 때문에 향상된 for문으로 하나씩 지워지게 코드 작성함
+        var allDel = document.querySelector(".allDel");
+        allDel.onclick = function() {
+            var list = document.querySelectorAll(".list > li");
+            for(var i in list) {
+                list[i].remove();
+            }
+        }
+        
+        
+
+        
+        
+
+    </script>
+
+
+    
+
+    
+</body>
+</html>
