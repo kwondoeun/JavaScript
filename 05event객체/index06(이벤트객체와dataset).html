@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>태그의 dataset속성 - 태그의 저장소</h3>
+
+    <!-- data- 으로 시작하고, 뒤에 오는 이름은 자유롭게 작성 -->
+    <!-- 문자열 준수 엄격 키와 값을 ""로 묶어주기(안하면 에러)-->
+    <ul class="list">
+        <li><a href="#" data-user-info='{"id": "1", "age": "10"}'>홍길동</a></li>
+        <li><a href="#" data-user-info='{"id": "2", "age": "20"}'>홍길자</a></li>
+        <li><a href="#" data-user-info='{"id": "3", "age": "30"}'>이순신</a></li>
+        <li><a href="#" data-user-info='{"id": "4", "age": "40"}'>박찬호</a></li>
+    </ul>
+
+    결과:<div class="result"></div>
+
+    <script>
+        var list = document.querySelector(".list");
+        list.onclick = function() {
+
+            //1.
+            event.preventDefault();
+            //2.
+            if(event.target.tagName != "A") return;
+            //3. data- 으로 만들어진 속성은 태그에서 찾아 쓸 수 있습니다.
+            //console.dir(event.target);
+            //console.dir(event.target.dataset); 
+            //console.dir(event.target.dataset.userInfo); 
+            
+            var data = event.target.dataset.userInfo;
+
+            var result = JSON.parse(data);
+            console.log(result);
+            
+        }
+    </script>
+
+    
+</body>
+</html>

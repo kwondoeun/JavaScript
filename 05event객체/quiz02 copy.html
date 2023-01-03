@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul li {
+            display: inline-block;
+        }
+		table { border-collapse: collapse; border-spacing : 0;}
+        thead th, tbody td {
+            border: 1px solid black;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <h2>이벤트 위임 이용해서 다음을 만들어 보세요.<h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>내용</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody class="list">
+                <tr>
+                    <td>1</td>
+                    <td>첫글</td>
+                    <td>hi</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>첫글</td>
+                    <td>hi</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>첫글</td>
+                    <td>hi</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>첫글</td>
+                    <td>hi</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script>
+            var list = document.querySelector(".list");
+
+            list.onclick = function(e) { //e가 이벤트 객체
+                if(e.target.tagName != "BUTTON") return; //타겟은 태그 이름 //태그의 이름이 버튼인 애들이들만 실행시킬수 있게
+                e.target.parentElement.parentElement.remove(); //버튼의 부모의 부모는 tr이다. 그래서 한줄씩 지워줄수 있다. //e.target을 찍어볼것.
+            }
+            
+
+        </script>
+    
+</body>
+</html>

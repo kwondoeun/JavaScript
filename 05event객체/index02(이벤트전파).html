@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>여러 이벤트를 한번에 걸기주기</h3>
+
+    <ul>
+        <li class="item">1.홍길동</li>
+        <li class="item">2.홍길자</li>
+        <li class="item">3.이순신</li>
+        <li class="item">4.강감찬</li>
+        <li class="item">5.둘리</li>
+    </ul>
+
+    선택한 태그의 값:
+    <p class="result"></p>
+    
+    <script>
+        var result = document.querySelector(".result");
+
+        var item = document.querySelectorAll(".item");
+
+        //이 방법은 비효율적인 방법 - 태그 10000개 라면?
+        //좋은 코드가 아님
+        for(var i = 0; i < item.length; i++) {
+
+            item[i].onclick = function() {
+                result.innerHTML = this.innerHTML;
+            }
+        }
+        
+    </script>
+    
+</body>
+</html>

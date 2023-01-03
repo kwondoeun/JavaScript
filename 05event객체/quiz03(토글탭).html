@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .toggle li {
+            display: inline-block;
+            padding: 15px 20px 14px;
+            width: 25%;
+            text-align: center;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+
+        .toggle-menu {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--
+    1. ul에 이벤트 버블링을 이용해서 클릭이벤트를 걸고 클릭되는 타겟의 data-id를 얻습니다.
+    2. toggle-menu의 active속성을 삭제
+    3. data-id의 값에 알맞는 태그에 active속성을 추가하면됩니다.
+    -->
+
+    <section>
+        <ul class="toggle">
+            <li data-id="#toggle1">메뉴1</li>
+            <li data-id="#toggle2">메뉴2</li>
+            <li data-id="#toggle3">메뉴3</li>
+        </ul>
+        <!-- 효율적인 방법은 아래의 세개를 얻어서 위의 toggle전부를 삭제해주는 방법도 존재 -->
+        <div>
+            <div class="toggle-menu active" id="toggle1">
+                토글메뉴1
+            </div>
+            <div class="toggle-menu" id="toggle2">
+                토글메뉴2
+            </div>
+            <div class="toggle-menu" id="toggle3">
+                토글메뉴3
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        //토글 클래스에 있는 어떠한 것을 눌러도 onclick이 동작하게
+        var toggle = document.querySelector(".toggle");
+        toggle.onclick = function() {
+            
+            //이벤트 객체를 통해서 id를 가져옴, 내가 선택한 애가 target, #toggle1속성으로 toggle1 id를 불러온다.
+            var data = event.target.dataset.id;
+            
+            //지금 .active 클래스를 가지고 있는애를 불러와서 삭제
+            var active = document.querySelector(".active");
+            active.classList.remove("active");
+            
+            //내가 선택한 것의 똑같은 id를 가진 div태그를 불러와서 클래스에 active를 추가해줌
+            var menu = document.querySelector(data);
+            menu.classList.add("active");
+         }
+
+        
+
+    </script>
+
+</body>
+
+</html>

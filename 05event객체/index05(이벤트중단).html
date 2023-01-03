@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <ul class="page">
+            <li><a href="list.board">1</a></li>
+            <li><a href="list.board">2</a></li>
+            <li><a href="list.board">3</a></li>
+            <li><a href="list.board">4</a></li>
+            <li><a href="list.board">5</a></li>
+        </ul>
+    </div>
+
+    <script>
+        var page = document.querySelector(".page");
+        page.onclick = function() {
+
+            event.preventDefault(); //a태그 or submit이 가진 기본이벤트를 중단
+
+            if (event.target.tagName != "A") return; //A가 아니라면 종료
+
+            console.log(event.target.innerHTML);
+            //..처리
+
+        }
+    </script>
+
+    <hr>
+
+    <form action="https://WWW.naver.com">
+        <input type="text" name="age">
+        <input type="submit" value="클릭" id="btn">
+    </form>
+
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function() {
+            event.preventDefault(); //submit의 고유 이벤트 중단
+            //..처리
+            console.dir(event);
+        }
+    </script>
+
+    
+</body>
+</html>

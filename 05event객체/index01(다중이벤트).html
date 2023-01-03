@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h3>이벤트 전파 특성 활용하기</h3>
+
+    <ul class="parent">
+        <li class="item">1.홍길동</li>
+        <li class="item">2.홍길자</li>
+        <li class="item">3.이순신</li>
+        <li class="item">4.강감찬</li>
+        <li class="item">5.둘리</li>
+    </ul>
+
+    선택한 태그의 값:
+    <p class="result"></p>
+
+    <script>
+        var result = document.querySelector(".result");
+
+        //부모에 이벤트를 걸면 자식한테 이벤트가 전파됩니다.
+        var parent = document.querySelector(".parent"); //ul
+        parent.onclick = function (e) { //매개변수명은 뭘 사용하든 상관이 없지만 보통 e라고 작성
+            // console.log(this); //ul
+            // result.innerHTML = this.innerHTML;
+            //console.log("이벤트동작"); //이벤트 전파의 특성
+
+            //이벤트 객체 - 이벤트함수에 첫번째 매개변수로 자동 전달됩니다.
+            // console.log(e);
+            // console.log(event); //매개변수로 받아도 되고, 직접 event를 사용해도 딘다.
+
+            // console.log(event.target); //이벤트가 동작된 실제 태그
+            // console.log(event.currentTarget); //실제로 이벤트가 걸려있는 태그(위치) //target과 currentTarget 차이 잘 알아두기
+
+            // console.dir(e.target); //tagname = "LI"
+            
+            if (e.target.tagName != "LI") return; //li태그가 아니라면 종료
+
+            result.innerHTML = e.target.innerHTML;
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>

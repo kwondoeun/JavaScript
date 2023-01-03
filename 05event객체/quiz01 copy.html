@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul li {
+            display: inline-block;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h3>이벤트객체활용</h3>
+    <div>
+        <ul class="box">
+            <li><img src="img/1.jpg" alt="1" width="100"></li>
+            <li><img src="img/2.jpg" alt="1" width="100"></li>
+            <li><img src="img/3.jpg" alt="1" width="100"></li>
+            <li><img src="img/4.jpg" alt="1" width="100"></li>
+        </ul>
+        결과:
+        <div class="result">
+            <img src="img/1.jpg" alt="결과" width="300" >
+        </div>
+    </div>
+
+    <script>
+        var result = document.querySelector(".result > img");
+
+        var box = document.querySelector(".box");
+        box.onclick = function() {
+            //
+            if(event.target.tagName != "IMG") return;
+            result.src = event.target.src;
+        }
+    </script>
+    
+</body>
+</html>
