@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .bgImg {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h3>애니메이션이 주기적으로 동작하려면 태그가 변경되야 합니다.</h3>
+
+    <div class="slide">
+        <img src="img/slide1.jpg" class="bgImg">
+    </div>
+
+    <script>
+        var slide = document.querySelector(".slide");
+        var cnt = 1;
+
+        window.setInterval(function () { //통으로 이미지 태그를 만들어서 덮어 써주므로 에니메이션이 새로운 태그로 인식하여 동작하게됨.
+            slide.innerHTML = '<img src="img/slide' + cnt + '.jpg" class="bgImg">' 
+            cnt++;
+
+            if (cnt > 4) { //애니메이션이 계속 동작해야하므로 cnt가 4보다 커졌을때 다시 1로 되돌린다.
+                cnt = 1;
+            }
+        }, 2000)
+    </script>
+
+</body>
+</html>

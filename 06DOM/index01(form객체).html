@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="list.board" name="actionForm">
+        <h3>가입창</h3>
+        이름: <input type="text" name="name"><br>
+        번호: <input type="text" name="phone" onblur="phoneFunc(event)"><br>
+        분야: 
+        <input type="checkbox" name="check">CSS
+        <input type="checkbox" name="check">JS
+        <input type="checkbox" name="check">HTML
+
+        <input type="submit" value="submit">
+    </form>
+
+    <script>
+        /*
+        1. form태그는 document의 자식이라서 form의 document.폼명 접근이 가능합니다.
+        2. input은 form의 자식이라서 document.폼명.태그name 으로 접근이 가능합니다.
+        */
+
+        // console.log(document.actionForm );
+        // console.log(document.actionForm.name );
+        // console.log(document.actionForm.phone );
+
+        var submit = document.actionForm.querySelector("input[type='submit']");
+        submit.onclick = function() {
+            
+            event.preventDefault(); //서브밋의 고유 이벤트 제거
+            
+            if(document.actionForm.name.value.length <= 0 ) { 
+                alert("이름은 필수 입니다");
+                document.actionForm.name.focus(); //포커싱
+                return; //함수종료
+
+            } else if(document.actionForm.phone.value.length != 11 ) {
+                alert("번호는 - 없이 11글자로 입력하세요");
+                document.actionForm.phone.focus();
+                return;
+
+            } else { //체크박스
+                var cnt = 0;
+                var check = document.actionForm.check;
+                for(var i = 0; i < check.length; i++) {
+                    if(check[i].checked ) {
+                        cnt++;
+                    }
+                }
+                if(cnt == 0) {
+                    alert("적어도 하나의 분야를 선택하세요");
+                    return;
+                }
+            }
+
+            document.actionForm.submit(); //폼.submit();
+        }
+
+
+        function phoneFunc(e) {
+            e.target.value = e.target.value.replaceAll("-",""); //번호 입력시 포커스가 밖으로 나갔을 때, 하이픈(-)을 제거해줌
+        }
+
+    </script>
+
+
+
+    
+</body>
+</html>

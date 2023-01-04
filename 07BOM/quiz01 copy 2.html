@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+</head>
+<body>
+    
+    <h3>애니메이션이 주기적으로 동작하려면 태그가 변경 되야합니다.</h3>
+
+    <style>
+        .slideImg {display: none;}
+        .slideImg.active {display: inline; animation: fadeIn 0.5s ease-in-out;}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            } to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+
+
+    <div class="slide">
+        <img src="img/slide1.jpg" class="slideImg active">
+        <img src="img/slide2.jpg" class="slideImg">
+        <img src="img/slide3.jpg" class="slideImg">
+        <img src="img/slide4.jpg" class="slideImg">
+    </div>
+
+    <script>
+        var arr = document.querySelectorAll(".slide > .slideImg"); //배열..
+        var i = 0;
+        setInterval(function() {
+
+            arr[i].classList.remove("active");
+            i++;
+            if(i == arr.length ) i = 0;
+            arr[i].classList.add("active");
+
+        }, 1000);
+    </script>
+
+</body>
+</html>

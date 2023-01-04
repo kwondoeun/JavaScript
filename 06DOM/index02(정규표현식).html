@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="list.board" name="joinForm">
+        <h3>가입창</h3>
+        아이디:<input type="text" name="id" placeholder="문자와 숫자" onkeypress="enter(event)"><br>
+        비밀번호:<input type="password" name="pw" placeholder="숫자, 영문자, 특수문자 최소한개" onkeypress="enter(event)"><br>
+        생략......
+
+        <button type="button" onclick="joinCheck()">가입</button>
+    </form>
+
+    <script>
+        function joinCheck() {
+
+            // var regExp = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{4,8}$/;
+            // if( !regExp.test("aaabbb1!") ) {
+            //     console.log("정규표현식 만족하지 않음");
+            // }
+
+            var regExp1 = /^[A-Za-z0-9]{5,10}$/;
+            var regExp2 = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{4,8}$/;
+            
+            var form = document.joinForm; //폼태그
+           
+            if( !regExp1.test( form.id.value ) ) {
+                alert("영문자 숫자 5-10글자 사이입니다");
+                form.id.focus();
+                return;
+
+            } else if( !regExp2.test(form.pw.value) ) {
+                alert("영문자 숫자 특수문자 포함 4~8글자 입니다");
+                form.pw.focus();
+                return;
+
+            } else {
+                form.submit(); //폼을 전송..
+            }
+
+
+        }
+
+        //UX 엔터키값 처리
+        function enter(e) {
+            if(e.keyCode == 13) { //keyCode는 사용자가 누른 키보드 번호 enter == 13
+                joinCheck();
+            }
+        }
+
+    </script>
+
+    
+</body>
+</html>
