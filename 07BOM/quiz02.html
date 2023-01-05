@@ -1,22 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
+    <!--  -->
 
-    <h2>네이버 타이머 도전하기</h2>
-    <h3>조건</h3>
-    <p>1. select태그는 시간:99 or 분:60 or 초:60으로 화면이 생성될 때 엘리먼트 생성기법으로 처리합니다.</p>
-    <p>2. 시간설정 버튼을 클릭하면 시간이 세팅됩니다.</p>
-    <p>3. 타이머시작버튼은 토글형태로 타이머가 동작중이라면 일시정지 버튼으로 활성화 됩니다</p>
-    <p>4. 사용자가 버튼을 잘못클릭하는 경우를 고려하여, 어떠한 경우라도 중복으로 타이밍이 발생되면 안됩니다.</p>
+    <h1>네이버 타이머 도전하기</h3>
+        조건 <br>
+        1. select 태그는 시간 99 or 분: 60 초 : 60으로 화면이 생성될 때 엘리먼트 생성기법으로 처리한다. <br>
+        2. 시간설정 버튼을 클릭하면 시간이 세팅됩니다<br>
+        3. 타이머시작버튼은 토글형태로 타이머가 동작중이라면 일시정지 버튼으로 활성화가 된다. <br>
+        4. 사용자가 버튼을 잘못 클릭하는 경우 고려하여, 어떠한 경우라도 중복으로 타이밍이 발생되면 안됩니다. <br>
 
-    <h2>시간을 선택하세요</h2>
-    
-    
+        <h3>시간을 선택하세요</h3>
+
+        <form class="time">
+
+        </form>
+
+        <br>
+        <div>
+            <h1>시간</h1>
+            <h1 id="timer"></h1>
+        </div>
+
+        <script>
+
+            var time = document.querySelector(".time");
+
+
+            //select문 만들기
+            var selHour = document.createElement("select");
+            var selMin = document.createElement("select");
+            var selSec = document.createElement("select");
+            time.appendChild(selHour);
+            time.appendChild(selMin);
+            time.appendChild(selSec);
+
+            //option태그 만들기
+            for (var i = 0; i < 100; i++) {
+
+                var hour = document.createElement("option");
+                hour.innerHTML = i;
+                selHour.appendChild(hour);
+
+                if (i < 60) {
+                    var minute = document.createElement("option");
+                    var second = document.createElement("option");
+                    minute.innerHTML = i;
+                    second.innerHTML = i;
+                    selMin.appendChild(minute);
+                    selSec.appendChild(second);
+                }
+            }
+
+
+            //버튼 만들기
+            var timeSet = document.createElement("button");
+            timeSet.innerHTML = "시간설정";
+            timeSet.type = "button";
+            time.appendChild(timeSet);
+
+            var timerStart = document.createElement("button");
+            timerStart.innerHTML = "타이머시작";
+            timerStart.type = "button";
+            time.appendChild(timerStart);
+
+
+
+            //시간설정 버튼 선택시 
+            timeSet.onclick = function () {
+                var timer = document.getElementById("timer");
+                timer.innerHTML = selHour.value + ":" + selMin.value + ":" + selSec.value;
+            }
+
+            var flag = true;
+            var interval;
+            //타이머시작 버튼 선택시
+            timerStart.onclick = function (e) {
+
+
+                if (flag) {
+                    timerStart.innerHTML = "일시정지";
+                    //console.log("실행중인데요 정지할께요");
+                    interval = setInterval(timerOn, 1000);
+                    flag = false;
+                } else {
+                    timerStart.innerHTML = "타이머시작";
+                    //console.log("정지중인데요 실행할께요.");
+                    clearInterval(interval);
+                    flag = true;
+                }
+
+
+
+
+            }
+
+            function timerOn() {
+
+                var timer = document.getElementById("timer");
+
+                var alltime = parseInt(selSec.value) + parseInt(selMin.value * 60) + parseInt(selHour.value * 3600);
+                if (alltime == 0) return;
+                alltime--;
+                console.log(alltime);
+
+                //시간계산
+                selHour.value = Math.floor(alltime / 3600);
+                alltime = alltime % 3600;
+
+                //분계산
+                selMin.value = Math.floor(alltime / 60);
+                alltime = alltime % 60;
+
+                //초계산
+                selSec.value = alltime;
+
+
+                timer.innerHTML = selHour.value + ":" + selMin.value + ":" + selSec.value;
+            }
+        </script>
+
 </body>
+
 </html>
