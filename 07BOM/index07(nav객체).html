@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //사용자의 접속환경을 userAgent속성으로 확인 할 수 있음
+        var userAgent = navigator.userAgent.toLowerCase();
+        
+        console.log(userAgent);
+        console.log(userAgent.lastIndexOf("edg"))
+        if(userAgent.lastIndexOf("edg") != -1) {
+            console.log("엣지");
+        } else if(userAgent.lastIndexOf("chrome") != -1) {
+            console.log("크롬");
+        } else if(userAgent.lastIndexOf("firefox") != -1) {
+            console.log("파이어폭스");
+        } else if(userAgent.lastIndexOf("whale") != -1) {
+            console.log("웨일");
+        } 
+
+
+
+    </script>
+
+
+</body>
+</html>

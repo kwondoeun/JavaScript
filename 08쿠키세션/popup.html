@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 팝업 자체 -->
+
+    <input type="checkbox" class="x"> 오늘 하루 이창을 열지 않기
+
+    <script>
+        var x = document.querySelector(".x");
+        x.onclick = function() {
+            console.log(x.checked);
+
+            if(x.checked == true) {
+                var date = new Date();
+                date.setHours(date.getHours() + 24); //지금 시간으로부터 24시간뒤
+                document.cookie = "coo=value; expires=" + date.toUTCString(); //쿠키에 넣을값을 작성
+                
+            }
+            window.close();
+        }
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 팝업창을 띄어주는 페이지 -->
+    <script>
+
+        console.log(document.cookie);
+        //모든 쿠키를 긴 스트링으로 한번에 가지고 나오기때문에 세미콜론을 이용해서 쿠키하나씩 떼어준다.
+        var arr = document.cookie.split("; ");
+
+        var pop = true;
+        for(var i in arr) {
+            //배열에 coo가 없다면 -1 반환
+            if(arr[i].indexOf("coo") != -1) {
+                pop = false;
+            }
+        }
+
+        if(pop == true) {
+            window.onload = function() {
+                window.open("popup.html", "별칭", "width=500px, height=300px, left=100px, top=100px, location=no")
+            }
+
+        }
+        
+    </script>
+    
+</body>
+</html>

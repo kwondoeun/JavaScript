@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="move()">네이버 이동하기</button>
+
+    <script>
+
+        function move() {
+            location.href = "https://www.naver.com";
+        }
+
+        //3초마다 새로고침
+        setInterval(function() {
+            location.reload();
+        }, 3000);
+
+    </script>    
+
+</body>
+</html>

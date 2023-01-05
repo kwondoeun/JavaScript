@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //console.log(navigator)
+        //콜백 - 호출하면 다시 거기다가 내가 결과를 돌려줄게(콜했을때 백을 받는다)
+        navigator.geolocation.getCurrentPosition(success, fail);
+
+        function success(result) { //위치정보 조회에 성공하면 success함수를 실행
+            console.log(result.coords);
+            console.log(result.coords.latitude); //위도
+            console.log(result.coords.longitude); //경도
+        }
+        function fail(result) { //위치정보를 실패하면 fail함수를 실행
+            console.log(result);
+        }
+    </script>
+    
+</body>
+</html>

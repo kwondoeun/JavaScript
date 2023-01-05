@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 쿠키js -->
+    <script src="popup.js"></script>
+
+</head>
+<body>
+      
+    <h2>메인화면</h2>
+
+    <script>
+        window.onload = function() {
+            //팝업
+
+            console.log(getCookie())
+
+            if( getCookie(mainPopup) != true) {
+                window.open("popup.html", "메인팝업", "width=400px, height=400px");
+            }
+
+        }
+    </script>
+
+
+
+</body>
+</html>
