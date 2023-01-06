@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .list {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .movie {
+            flex-basis: 100px;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="list">
+        <!--
+            <div class="movie">
+                <img class="img" src="#">
+                <p class="title"></p>
+            </div>
+        -->
+    </div>
+
+    <script>
+        fetch("https://yts.mx/api/v2/list_movies.json")
+            .then(function (res) {
+                return res.json()
+            })
+            .then(function (data) {
+                var arr = data.data.movies;
+
+                var str = ""; //화면을 그릴 문자열
+                for (var i = 0; i < arr.length; i++) {
+                    //console.log(arr[i]);
+                    var img = arr[i].medium_cover_image;
+                    var title = arr[i].title;
+
+                    str += '<div class="movie">';
+                    str += '<img class="img" src="'+ img +'">';
+                    str += '<p class="title">'+ title +'</p>';
+                    str += '</div>';
+                }
+
+                //innerHTML
+                document.querySelector(".list").innerHTML = str;
+            })
+    </script>
+
+</body>
+
+</html>
