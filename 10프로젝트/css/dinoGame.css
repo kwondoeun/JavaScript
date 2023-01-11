@@ -50,6 +50,18 @@ body {
     left: 670px;
 }
 
+/* .dinoGame .btnArea {
+    position: relative;
+} */
+
+/* .playAgainBtn {
+    position: absolute;
+    left: 900px;
+} */
+
+
+
+
 .dinoGame .playAgainBtn {
     /* display: inline-block; */
     padding: 15px 25px;
@@ -77,6 +89,18 @@ body {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
+
+/* .moreGames {
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    color: white;
+    border: 5px solid white;
+    height: 500px;
+    width: 250px;
+    text-align: center;
+} */
+
 
 
 .dinoGame .spaceBar {

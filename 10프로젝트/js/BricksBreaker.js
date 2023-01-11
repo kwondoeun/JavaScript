@@ -4,7 +4,7 @@ var x = canvas.width / 2;
 var y = canvas.height - 30;
 var dx = 2;
 var dy = -2;
-var ballRadius = 10;
+var ballRadius = 25;
 //공을 치기 위한 paddle
 var paddleHeight = 10;
 var paddleWidth = 80;
@@ -35,7 +35,8 @@ var life = 3;
 //점수
 var score = 0;
 
-
+var item = "on";
+var item2 = "on";
 
 
 //키눌렀을 시 paddle움직이는 함수 실행
@@ -65,13 +66,20 @@ function mouseMoveHandler(e) {
         paddleX = relativeX - paddleWidth / 2;
     }
 }
+
+
 //게임시작 전 멘트
 function drawText() {
-    ctx.font = "32px Arial";
-    ctx.fillStyle = "balck";
-    ctx.fillText("게임을 시작하려면 Enter 키를 누르세요.", 65, 200)
+
+    ctx.font = "37px Arial";
+
+    ctx.strokeStyle = "red";
+
+    ctx.strokeText("게임을 시작하려면 Enter 키를 누르세요.", 20, 210);
+
 }
 drawText();
+
 
 //벽돌 파괴
 function collisionDetection() {
@@ -80,7 +88,7 @@ function collisionDetection() {
             var b = bricks[c][r];
             //calculations
             if (b.status >= 1) {
-                if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                if (x > b.x-ballRadius+10 && x < b.x + brickWidth && y > b.y-ballRadius && y < b.y + brickHeight) {
                     dy = -dy;
                     b.status--;
                     if (b.status == 0) score++;
@@ -103,13 +111,16 @@ function drawScore() {
 function drawLife() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "red";
-    ctx.fillText("♥", 300, 20)
+    ctx.fillText("♥ " + life, 650, 20)
 }
 
 
 function drawBall() { //공 그리기
-    ctx.beginPath();
+    var img = new Image();
+    img.src = "./img/ball.png";
+    ctx.drawImage(img,x,y,25,25);
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+    ctx.beginPath();
     ctx.fillStyle = "rgb(6, 98, 114)";
     ctx.fill();
     ctx.closePath();
@@ -118,11 +129,37 @@ function drawBall() { //공 그리기
 function drawPaddle() {//패들 그리기
     ctx.beginPath();
     //
-    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+    ctx.roundRect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight, [20, 20, 20, 20]);
     ctx.fillStyle = "#rgb(6, 98, 114)";
     ctx.fill();
     ctx.closePath();
 }
+
+
+function drawItem() {
+    var img = new Image();
+    img.src = "./img/life.png";
+    ctx.drawImage(img, 350, 150, 30, 30);
+    if (x > 350 && x < 380 && y > 150 && y < 180) {
+        life++;
+        item = "off";
+        
+    }
+}
+var i = 0;
+function drawItem2() {
+    var img = new Image();
+    img.src = "./img/defence.png";
+    ctx.drawImage(img, 450, 150, 30, 30);
+    if (x > 450 && x < 480 && y > 150 && y < 180) {
+        paddleWidth = 150;
+        item2 = "off";
+        setInterval(function(){i++;},1000);
+    }
+}
+
+
+
 //벽돌 그리기
 function drawBricks() {
     for (var c = 0; c < brickColumnCount; c++) {
@@ -144,22 +181,33 @@ function drawBricks() {
     }
 }
 
+
 // 실행
 function draw() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height); //이전 캔버스흔적 지움
+    if (item == "on" && score >= 10) {
+        drawItem();
+    }
+    if (item2 == "on" && score >= 20) {
+        drawItem2();
+    }    
+    if(i==10){
+        paddleWidth=80;
+    }
     drawBricks();
     drawBall();
     drawPaddle();
     drawScore();
+    drawLife();
     collisionDetection();
-    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) { //좌우벽튕김
+    if (x + dx > canvas.width - ballRadius || x + dx < 0) { //좌우벽튕김
         dx = -dx;
     }
-    if (y + dy < ballRadius) { //위아래벽튕김
+    if (y + dy < 0) { //위아래벽튕김
         dy = -dy;
     } else if (y + dy > canvas.height - ballRadius) {
-        if (x > paddleX && x < paddleX + paddleWidth) {
+        if (x > paddleX-ballRadius && x < paddleX + paddleWidth) {
             if (x < paddleX + 20) {
                 if (dx > 0) {
                     dx = -dx;
@@ -185,13 +233,17 @@ function draw() {
             dy = -dy;
 
         } else {
-            x = canvas.width / 2;
-            y = canvas.height - 30;
-            alert("GAME OVER! Score : " + score + " !!");
+            life--;
+            if (life == 0) {
+                x = canvas.width / 2;
+                y = canvas.height - 30;
+                alert("GAME OVER! Score : " + score + " !!");
 
-            document.location.reload();
+                document.location.reload();
+            } else {
+                x = paddleX + 60;
+            }
 
-        
         }
     }
 
@@ -203,12 +255,13 @@ function draw() {
     x += dx;
     y += dy;
 
-} 
+}
 
 document.addEventListener("keydown", start, false);
-btn1.onclick = function(event){
+btn1.onclick = function (event) {
     speed = 10;
     stat = 1;
+    life = 3;
     var btnclicked = document.querySelector(".btnclicked");
     btnclicked.classList.remove("btnclicked");
     event.target.classList.add("btnclicked");
@@ -218,7 +271,7 @@ btn1.onclick = function(event){
             bricks[c][r] = { x: 0, y: 0, status: stat };
         }
     }
-    
+
 }
 for (var c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
@@ -226,9 +279,10 @@ for (var c = 0; c < brickColumnCount; c++) {
         bricks[c][r] = { x: 0, y: 0, status: stat };
     }
 }
-btn2.onclick = function(event){
+btn2.onclick = function (event) {
     speed = 5;
     stat = 2;
+    life = 2;
     var btnclicked = document.querySelector(".btnclicked");
     btnclicked.classList.remove("btnclicked");
     event.target.classList.add("btnclicked");
@@ -238,7 +292,6 @@ btn2.onclick = function(event){
             bricks[c][r] = { x: 0, y: 0, status: stat };
         }
     }
-    
 }
 
 function start(e) {

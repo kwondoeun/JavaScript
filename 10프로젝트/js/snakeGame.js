@@ -1,20 +1,23 @@
-const canvas = document.getElementById("game-canvas");
-const ctx = canvas.getContext("2d");
+var gameCanvas = document.getElementById("game-canvas");
+var Snakectx = gameCanvas.getContext("2d");
 var inner = document.querySelector(".inner");
+var btn = document.querySelector(".playAgainBtn");
 
 var gamestart;
 window.onload = () => {
+
     document.addEventListener("keydown", keyPush);
 
     // 게임 시작시 초당 15fps로 game 함수 호출
     gamestart = setInterval(game, 1000 / 15);
+
 }
 
 
 // 뱀의 위치
 let positionX = 10, positionY = 10;
 
-// gridSize: 가로세로 28px , tileCount = 가로세로 28개씩 총 784개의 타일
+// gridSize: 가로세로 30px , tileCount = 가로세로 30개씩 총 900개의 타일
 const gridSize = 28, tileCount = 28;
 
 // 뱀이 움직이는 방향을 설정
@@ -40,50 +43,59 @@ function game() {
 
 
     //바탕 색깔 -> 검정
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    Snakectx.fillStyle = "black";
+    Snakectx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
 
     // 뱀 그리기
-    ctx.fillStyle = "lime";
+    Snakectx.fillStyle = "lime";
     for (let i = 0; i < trail.length; i++) {
         // trail 배열만큼 그림
-        ctx.fillRect(trail[i].x * gridSize, trail[i].y * gridSize, gridSize - 2, gridSize - 2);
+        Snakectx.fillRect(trail[i].x * gridSize, trail[i].y * gridSize, gridSize - 2, gridSize - 2);
 
 
-        // 게임 오버 case 1 (뱀의 머리와 몸통이 닿았을 때 처리)
+        // 게임 오버 case 1
         if (trail[i].x === positionX && trail[i].y === positionY && tailLength != 4) {
-            alert("your score:"+count);
             tailLength = 4;
+            alert("your score:"+count);
+            document.location.reload();
             clearInterval(gamestart);
             gamestart = false;
         }
 
-        // 게임 오버 case 2 (뱀의 머리가 벽 경계에 있을 때 처리)
+        // 뱀 머리가 경계에 있을 때 처리
         if (positionX < 0) {
-            alert("your score:"+count);
             tailLength = 4;
+            // document.location.reload();
+            alert("your score:"+count);
+            document.location.reload();
             positionX = 10, positionY = 10;
             clearInterval(gamestart);
             gamestart = false;
 
         }
         if (positionX > tileCount - 1) {
-            alert("your score:"+count);
             tailLength = 4;
+            // document.location.reload();
+            alert("your score:"+count);
+            document.location.reload();
             positionX = 10, positionY = 10;
             clearInterval(gamestart);
             gamestart = false;
         }
         if (positionY < 0) {
-            alert("your score:"+count);
             tailLength = 4;
+            // document.location.reload();
+            alert("your score:"+count);
+            document.location.reload();
             positionX = 10, positionY = 10;
             clearInterval(gamestart);
             gamestart = false;
         }
         if (positionY > tileCount - 1) {
-            alert("your score:"+count);
             tailLength = 4;
+            // document.location.reload();
+            alert("your score:"+count);
+            document.location.reload();
             positionX = 10, positionY = 10;
             clearInterval(gamestart);
             gamestart = false;
@@ -110,6 +122,7 @@ function game() {
         appleX = Math.floor(Math.random() * tileCount);
         appleY = Math.floor(Math.random() * tileCount);
         inner.innerHTML = count;
+
     }
 
     // 사과 먹었을 때 2
@@ -124,11 +137,22 @@ function game() {
     }
 
     // 사과 그리기
-    ctx.fillStyle = "red";
-    ctx.fillRect(appleX * gridSize, appleY * gridSize, gridSize - 2, gridSize - 2);
+    // 사과 이미지로 그려주기
+    const img = new Image();
+    img.src = 'img/a.png'; 
+    Snakectx.drawImage(img, appleX * gridSize, appleY * gridSize, gridSize - 2, gridSize - 2); 
 
-    ctx.fillStyle = "yellow";
-    ctx.fillRect(appleX1 * gridSize, appleY1 * gridSize, gridSize - 2, gridSize - 2);
+    const img2 = new Image();
+    img2.src = 'img/a1.png'; 
+    Snakectx.drawImage(img2, appleX1 * gridSize, appleY1 * gridSize, gridSize - 2, gridSize - 2); 
+
+
+    // 사과 색칠에서 이미지로 변경 (위)
+    // Snakectx.fillStyle = "red";
+    // Snakectx.fillRect(appleX * gridSize, appleY * gridSize, gridSize - 2, gridSize - 2);
+
+    // Snakectx.fillStyle = "yellow";
+    // Snakectx.fillRect(appleX1 * gridSize, appleY1 * gridSize, gridSize - 2, gridSize - 2);
 
 }
 
@@ -159,5 +183,5 @@ function keyPush(evt) {
         velocityY = 1;
         move = "down";
     }
-
+   
 }

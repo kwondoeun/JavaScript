@@ -9,6 +9,9 @@ img1.src = 'img/dino3.png';
 var img2 = new Image();
 img2.src = 'img/cactus.png';
 
+var back = new Image();
+img2.src = 'img/cactus.png';
+
 
 //점수
 var score = 0;
@@ -165,12 +168,7 @@ function playPerFrame() {
     //     jumping = false;
     // }, 3000);
 
-
     mainCharacter.draw();
-
-
-
-
 }
 
 

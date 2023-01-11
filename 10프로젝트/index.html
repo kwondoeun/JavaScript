@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-    
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -16,33 +15,29 @@
         <!-- 메뉴 바 -->
         <nav>
             <ul class="menubar">
-                <li data-id="#menu1">game1</li>
-                <li data-id="#menu2">game2</li>
-                <li data-id="#menu3">game3</li>
-                <li data-id="#menu4">game4</li>
+                <a href="2048.html">
+                    <li>2048!</li>
+                </a>
+                <a href="snakeGame.html">
+                    <li>snakeGame</li>
+                </a>
+                <a href="breakOut.html">
+                    <li>BricksBreaker</li>
+                </a>
+                <a href="dinoGame.html">
+                    <li>DinoGame</li>
+                </a>
             </ul>
         </nav>
 
         <!-- 메인화면 container -->
-        <div class="container menu active" id="menu1">
-			<h2>1</h2>
-        </div>
-
-        <div class="container menu" id="menu2">
-            
-            <h2>2</h2>
-        </div>
-
-        <div class="container menu" id="menu3">
-            <h2>3</h2>
-        </div>
-
-        <div class="container menu" id="menu4">
-            <h2>4</h2>
+        <div class="container menu active">
+            <div style="display: block;">
+            <div class="logo">RETRO GAME</div>
         </div>
     </div>
 
-    <script src="./index.js"></script>
+    <script src="./js/index.js"></script>
 
 </body>
 
