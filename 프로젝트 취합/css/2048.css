@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* 
+body{
+    background-color: #DED3A6;
+} */
+
+.box2048 p{
+    vertical-align: top;
+}
+
+.box2048 td{
+    border: 2px solid #372c25;
+    border-radius: 9px;
+    text-align: center;
+    vertical-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    height: 70px;
+    width: 70px;
+    color: #684A23;
+    background-color: #FBEDDC;
+}
+
+/* .wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+} */
+
+.box2048{
+    border: 20px solid #372c25;
+    background-color: #372c25;
+    border-radius: 20px;
+}
+
+.box2048 .titleBar{
+    /* margin-left: 70px; */
+    /* margin-top: 35px; */
+    height: 70px;
+}
+
+/* 타이틀 부분 */
+
+.box2048 .titlePart{
+    width: 148px;
+    height: 35px;
+    background-color: #372c25;
+    margin: 0px;
+}
+
+.box2048 .title{
+    color: white;
+    font-size: 48px;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* 점수 판 */
+.box2048 .scorePart{
+    width: 130px;
+    height: 35px;
+    background-color: #46382E;
+    padding: 0px;
+    margin: 0px;
+}
+
+.box2048 .scoreText{
+    font-size:14pt;
+    margin: 0px;
+    color: #715541;
+}
+
+.box2048 .score{
+    font-size: 28pt;
+    margin: 0px;
+    color: white;
+}
+
+/* 보드 박스 */
+..board{
+    /* margin-left: 70px; */
+    /* margin-top: 5px; */
+}
+
+
+/* 밑부분 카피라이트 부분 */
+.copyright{
+    margin-top: 3px;
+    margin-left: 82px;
+    font-size: 10pt;
+    color: white;
+}

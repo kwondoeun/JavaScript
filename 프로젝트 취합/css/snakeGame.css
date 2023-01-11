@@ -1,0 +1,63 @@
+#game-canvas {
+    position: relative;
+}
+
+/* body {
+    background-color: rgb(7, 39, 66);
+} */
+
+/* canvas {
+    position: relative;
+    top: 20px;
+} */
+
+.snakeGame h2 {
+    color: rgb(115, 221, 115);
+    position: absolute;
+    top: 30px;
+    left: 450px;
+}
+
+.snakeGame .inner {
+    /* position: absolute;
+    top: 40px;
+    left: 480px;
+    font-size: 40px;
+    color: rgb(115, 221, 115); */
+}
+
+/* .snakeGame .playAgainBtn {
+    display: inline-block;
+    top: 15px;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #f84914d8;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+
+}
+
+.snakeGame .btnArea {
+    position: relative;
+}
+
+.snakeGame .playAgainBtn {
+    position: absolute;
+    left: 900px;
+}
+
+.snakeGame .playAgainBtn:hover {
+    background-color: #d12008
+}
+
+.snakeGame .playAgainBtn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+} */

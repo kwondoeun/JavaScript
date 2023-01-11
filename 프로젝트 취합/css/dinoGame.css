@@ -1,0 +1,88 @@
+body {
+    background-color: rgb(7, 39, 66);
+
+}
+
+@font-face {
+    font-family: 'CWDangamAsac-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.dinoGame .gameOver {
+    color: white;
+    font-size: 80px;
+    position: absolute;
+    top: 400px;
+    left: 880px;
+    font-family: 'CWDangamAsac-Bold';
+}
+
+
+#canvas {
+    background-color: beige;
+    position: relative;
+
+}
+
+
+.dinoGame .score {
+    position: absolute;
+    top: 50px;
+    left: 450px;
+    color: #3e8e41;
+    font-family: 'GmarketSansMedium';
+}
+
+.dinoGame .inner {
+    color: #3e8e41;
+    font-size: 50px;
+    position: absolute;
+    top: 70px;
+    left: 670px;
+}
+
+.dinoGame .playAgainBtn {
+    /* display: inline-block; */
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #f84914d8;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    /* position: absolute; */
+    /* left: 870px; */
+    font-family: 'GmarketSansMedium';
+}
+
+.dinoGame .playAgainBtn:hover {
+    background-color: #d12008
+}
+
+.dinoGame  .playAgainBtn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
+.dinoGame .spaceBar {
+    color: white;
+    position: absolute;
+    top: 50px;
+    left: 800px;
+    display: none;
+}

@@ -1,170 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
 
+    <link rel="stylesheet" href="project.css">
+
+</head>
 <body>
 
-    <canvas id="game-canvas" width="900" height="900"></canvas>
+    <div class="inner"></div>
+    <p align="center">
+        <canvas id="game-canvas" width="784" height="784"></canvas>
+    </p>
+    <h2>score:</h2>
 
-    <script>
-        const canvas = document.getElementById("game-canvas")
-        const ctx = canvas.getContext("2d")
-
-        window.onload = () => {
-            document.addEventListener("keydown", keyPush)
-
-            // 게임 시작시 초당 15fps로 game 함수 호출
-            setInterval(game, 1000 / 15)
-        }
-
-        // 뱀의 위치
-        let positionX = 10, positionY = 10;
-
-        // gridSize: 가로세로 30px , tileCount = 가로세로 30개씩 총 900개의 타일
-        const gridSize = 30, tileCount = 30
-
-        // 뱀이 움직이는 방향을 설정
-        let velocityX = 0, velocityY = 0
-
-        // 사과(먹이) 위치변수
-        let appleX = 15, appleY = 15
-        let appleX1 = 20, appleY1 = 20
-
-        // 뱀의 몸통을 저장하는 배열
-        const trail = []
-
-        // 현재 뱀의 길이
-        let tailLength = 4
-
-        function game() {
-
-            // velocity 상황에 따라 positionXY의 위치를 결정
-            positionX += velocityX
-            positionY += velocityY
-
-
-            // 뱀 머리가 경계에 있을 떄 처리
-            if (positionX < 0) {
-                positionX = tileCount - 1
-            }
-            if (positionX > tileCount - 1) {
-                positionX = 0
-            }
-            if (positionY < 0) {
-                positionY = tileCount - 1
-            }
-            if (positionY > tileCount - 1) {
-                positionY = 0
-            }
-
-            //바탕 색깔 -> 검정
-            ctx.fillStyle = "black"
-            ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-            // 뱀 그리기
-            ctx.fillStyle = "lime"
-            for (let i = 0; i < trail.length; i++) {
-                // trail 배열만큼 그림
-                ctx.fillRect(trail[i].x * gridSize, trail[i].y * gridSize, gridSize - 2, gridSize - 2)
-
-                // 게임 오버 case 1
-                if (trail[i].x === positionX && trail[i].y === positionY && tailLength != 4) {
-                    tailLength = 4;
-                    document.location.reload();
-                                       
-                }
-            }
-
-            // 게임이 진행될 때마다 positionXY를 trail 배열에 삽입
-            trail.push({
-                x: positionX,
-                y: positionY,
-
-            })
-
-            // 단, trail의 크기는 tailLength를 넘지 않게
-            while (trail.length > tailLength) {
-                trail.shift()
-            }
-
-            // 사과 먹었을 때
-            if (appleX === positionX && appleY === positionY) {
-                tailLength++
-                appleX = Math.floor(Math.random() * tileCount)
-                appleY = Math.floor(Math.random() * tileCount)
-
-            }
-
-            if (appleX1 === positionX && appleY1 === positionY) {
-                tailLength++
-                appleX1 = Math.floor(Math.random() * tileCount)
-                appleY1 = Math.floor(Math.random() * tileCount)
-            }
-
-            // 사과 그리기
-            ctx.fillStyle = "red"
-            ctx.fillRect(appleX * gridSize, appleY * gridSize, gridSize - 2, gridSize - 2)
-
-            ctx.fillStyle = "pink"
-            ctx.fillRect(appleX1 * gridSize, appleY1 * gridSize, gridSize - 2, gridSize - 2)
-
-        }
-
-        // 방향키 이벤트
-        var keyCode = "";
-        var move = "";
-        function keyPush(evt) {
-            // arrows keys and it's left and then clockwise
-            // switch (evt.keyCode) {
-            //     case 37:
-            //         velocityX = -1;
-            //         velocityY = 0;
-            //         break;
-            //     case 38:
-            //         velocityX = 0;
-            //         velocityY = -1;
-            //         break;
-            //     case 39:
-            //         velocityX = 1;
-            //         velocityY = 0;
-            //         break;
-            //     case 40:
-            //         velocityX = 0;
-            //         velocityY = 1;
-            //         break;
-            // }
-            if(evt.keyCode == 37 && move != "right") {
-                velocityX = -1;
-                velocityY = 0;
-                move = "left";
-            } else if(evt.keyCode == 38&& move != "down") {
-                velocityX = 0;
-                velocityY = -1;
-                move = "up";
-            } else if(evt.keyCode == 39 && move !="left") {
-                velocityX = 1;
-                velocityY = 0;
-                move = "right";
-            } else if(evt.keyCode == 40&& move != "up") {
-                velocityX = 0;
-                velocityY = 1;
-                move = "down";
-            }
-
-
-
-
-
-        }
-
-    </script>
-
+    <script src="project.js"></script>
+    
 </body>
-
 </html>

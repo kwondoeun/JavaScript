@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div>
+        <!-- 메뉴 바 -->
+        <nav>
+            <ul class="menubar">
+                <a href="2048.html"><li>2048!</li></a>
+                <a href="snakeGame.html"><li>snakeGame</li></a>
+                <a href="breakOut.html"><li>BricksBreaker</li></a>
+                <a href="dinoGame.html"><li>DinoGame</li></a>
+            </ul>
+        </nav>
+
+        <!-- 메인화면 container -->
+        <div class="container menu active">
+            <div class="snakeGame">
+                <link rel="stylesheet" href="./css/snakeGame.css">                
+                
+                    <canvas id="game-canvas" width="784" height="784"></canvas>
+
+                <div>
+                    <h2>score:<span class="inner"></span></h2>  
+                </div>
+                <!-- <div class="inner"></div> -->
+    
+                <script src="./js/snakeGame.js"></script>
+            
+                <!-- <div class="btnArea">
+                    <button class="playAgainBtn">main</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>
